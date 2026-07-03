@@ -1,8 +1,8 @@
 # Ctrl+Eat
 
-!(https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)
-!(https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-!(https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)
+![React](https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)
 
 ## Огляд проєкту
 Ctrl+Eat — це сучасний вебдодаток (Single Page Application) для сервісу замовлення та доставки їжі. Проєкт розроблено з використанням бібліотеки React та інструменту збірки Vite, з фокусом на високу продуктивність, чистий інтерфейс користувача та безшовну навігацію.
