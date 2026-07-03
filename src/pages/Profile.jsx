@@ -1,48 +1,65 @@
-import React from 'react';
+const orders = [
+  { id: '1024', date: '12 Травня 2026', total: 450, status: 'Доставлено' },
+  { id: '0988', date: '03 Травня 2026', total: 820, status: 'Доставлено' },
+  { id: '0852', date: '15 Квітня 2026', total: 360, status: 'Доставлено' },
+]
 
 const Profile = () => {
+  const totalSpent = orders.reduce((sum, order) => sum + order.total, 0)
+
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-md p-6 border border-gray-100">
-        <div className="flex items-center space-x-4 mb-8 pb-6 border-b border-gray-200">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl font-bold">
-            FE
+    <section className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <div className="p-6 sm:p-8 border-b border-slate-100 bg-gradient-to-br from-emerald-50/50 to-white">
+          <div className="flex items-center gap-5">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl font-bold font-mono shadow-sm shadow-emerald-600/20">
+              CE
+            </div>
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">Foodie Explorer</h1>
+              <p className="text-slate-500 text-sm mt-0.5">geek228_bit · учасник Ctrl+Eat</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-3xl font-bold text-gray-800">Foodie Explorer</h1>
-            <p className="text-gray-500">Профіль користувача</p>
+
+          <div className="grid grid-cols-3 gap-3 mt-6">
+            {[
+              { label: 'Замовлень', value: orders.length },
+              { label: 'Витрачено', value: `${totalSpent} ₴` },
+              { label: 'Статус', value: 'VIP' },
+            ].map((stat) => (
+              <div key={stat.label} className="px-3 py-3 rounded-xl bg-white border border-slate-200 text-center">
+                <p className="font-mono text-sm sm:text-base font-bold text-emerald-600">{stat.value}</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-4">Історія замовлень</h2>
-          <ul className="space-y-4">
-            <li className="p-4 rounded-lg bg-gray-50 border border-gray-100 flex justify-between items-center">
-              <div>
-                <p className="font-bold text-gray-800">Замовлення #1024</p>
-                <p className="text-sm text-gray-500">12 Травня 2026</p>
-              </div>
-              <span className="text-green-600 font-bold">450 ₴</span>
-            </li>
-            <li className="p-4 rounded-lg bg-gray-50 border border-gray-100 flex justify-between items-center">
-              <div>
-                <p className="font-bold text-gray-800">Замовлення #0988</p>
-                <p className="text-sm text-gray-500">03 Травня 2026</p>
-              </div>
-              <span className="text-green-600 font-bold">820 ₴</span>
-            </li>
-            <li className="p-4 rounded-lg bg-gray-50 border border-gray-100 flex justify-between items-center">
-              <div>
-                <p className="font-bold text-gray-800">Замовлення #0852</p>
-                <p className="text-sm text-gray-500">15 Квітня 2026</p>
-              </div>
-              <span className="text-green-600 font-bold">360 ₴</span>
-            </li>
+        <div className="p-6 sm:p-8">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">Історія замовлень</h2>
+          <ul className="space-y-3">
+            {orders.map((order) => (
+              <li
+                key={order.id}
+                className="group p-4 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center hover:border-emerald-200 hover:bg-emerald-50/30 transition-all duration-200"
+              >
+                <div>
+                  <p className="font-mono text-sm font-bold text-slate-800">
+                    #{order.id}
+                  </p>
+                  <p className="text-xs text-slate-500 mt-0.5">{order.date}</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-mono font-bold text-emerald-600">{order.total} ₴</p>
+                  <p className="text-[11px] text-emerald-600/70 mt-0.5">{order.status}</p>
+                </div>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
-    </div>
-  );
-};
+    </section>
+  )
+}
 
-export default Profile;
+export default Profile
