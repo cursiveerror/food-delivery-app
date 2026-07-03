@@ -1,17 +1,70 @@
-# React + Vite
+# Ctrl+Eat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+!(https://img.shields.io/badge/React-%2320232a.svg?logo=react&logoColor=%2361DAFB)
+!(https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+!(https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)
 
-Currently, two official plugins are available:
+## Огляд проєкту
+Ctrl+Eat — це сучасний вебдодаток (Single Page Application) для сервісу замовлення та доставки їжі. Проєкт розроблено з використанням бібліотеки React та інструменту збірки Vite, з фокусом на високу продуктивність, чистий інтерфейс користувача та безшовну навігацію.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Основний функціонал
+*   **Динамічний каталог товарів:** Відображення карток страв на основі локальної імітації бази даних (JSON).
+*   **Глобальне управління станом:** Використання React Context API для обробки логіки кошика (додавання, видалення, зміна кількості), що дозволяє уникнути надмірного прокидання пропсів.
+*   **Пошук та фільтрація:** Клієнтська система пошуку страв за назвою та їх фільтрації за категоріями (наприклад: Бургери, Піца, Суші).
+*   **Адаптивний дизайн:** Інтерфейс повністю стилізовано за допомогою utility-first фреймворку Tailwind CSS для забезпечення коректного відображення на мобільних та десктопних пристроях.
+*   **Маршрутизація:** Реалізація навігації між головною сторінкою, кошиком та профілем за допомогою React Router.
 
-## React Compiler
+## Структура файлів та директорій
+Відповідно до архітектури проєкту, кодова база має наступну модульну структуру:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```text
+food-delivery-app/
+├── node_modules/       (Залежності проєкту)
+├── public/             (Статичні ресурси: favicon.svg, icons.svg)
+├── src/
+│   ├── assets/         (Медіафайли для імпорту: hero.png, react.svg, vite.svg)
+│   ├── components/     (Перевикористовувані UI-компоненти: Footer.jsx, Header.jsx, Layout.jsx, ProductCard.jsx, SearchFilter.jsx)
+│   ├── data/           (Імітація бекенду: restaurants.json)
+│   ├── pages/          (Сторінки маршрутизатора: Cart.jsx, Home.jsx, Profile.jsx)
+│   ├── App.css         (Стилі кореневого компонента)
+│   ├── App.jsx         (Головний компонент з налаштуванням маршрутизації)
+│   ├── index.css       (Глобальні директиви Tailwind CSS)
+│   └── main.jsx        (Точка входу та обгортка Context Provider)
+├──.gitignore          (Файли, що ігноруються системою Git)
+├── eslint.config.js    (Конфігурація статичного аналізатора коду)
+├── index.html          (Головний HTML-шаблон)
+├── package-lock.json   (Фіксація версій залежностей)
+├── package.json        (Маніфест проєкту зі скриптами та залежностями)
+├── README.md           (Головна документація)
+└── vite.config.js      (Конфігурація системи збірки Vite)
+```
 
-## Expanding the ESLint configuration
+## Встановлення та запуск
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-test
+### Вимоги до середовища
+Переконайтеся, що на вашому комп'ютері встановлено Node.js версії 18 або вище.
+
+### Інструкція
+1.  Клонуйте репозиторій на локальну машину:
+    ```bash
+    git clone [https://github.com/ваша-організація/food-delivery-app.git](https://github.com/ваша-організація/food-delivery-app.git)
+    ```
+2.  Перейдіть до директорії проєкту:
+    ```bash
+    cd food-delivery-app
+    ```
+3.  Встановіть необхідні залежності:
+    ```bash
+    npm install
+    ```
+4.  Запустіть локальний сервер для розробки:
+    ```bash
+    npm run dev
+    ```
+
+## Правила командної роботи (Contribution)
+У цьому проєкті застосовується суворий підхід до управління версіями за допомогою Git для забезпечення стабільності кодової бази.[1, 1]
+
+1.  **Заборона прямого пушу:** Відправлення коду (push) безпосередньо в гілку `master` суворо заборонено.
+2.  **Розгалуження функціоналу (Feature Branching):** Будь-який новий функціонал або виправлення помилок має розроблятися в ізольованих гілках за шаблоном `feature/назва-задачі` (наприклад, `feature/layout`, `feature/cart-logic`).
+3.  **Pull Requests та Code Review:** Після завершення роботи над задачею розробник повинен створити Pull Request. Злиття з головною гілкою можливе лише після детальної перевірки (Code Review) та локального тестування коду іншим учасником команди.
