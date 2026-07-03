@@ -13,7 +13,7 @@
     "price": 500,
     "description": "Традиційна італійська піца з томатним соусом, свіжою моцарелою та базиліком.",
     "category": "Піца",
-    "imageURL": "https://images.unsplash.com/photo-1604068549290-dea0e4a30536?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1598023696416-0193a0bcd302?q=80&w=1536&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 3,
@@ -37,7 +37,7 @@
     "price": 480,
     "description": "Дві яловичі котлети, хрусткий копчений бекон, американський сир та соус барбекю.",
     "category": "Бургери",
-    "imageURL": "https://images.unsplash.com/photo-1594212586048-a4616238b671?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?q=80&w=1068&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 6,
@@ -61,7 +61,7 @@
     "price": 400,
     "description": "Помідори, огірки, червона цибуля, оливки каламата та сир фета з грецькою заправкою.",
     "category": "Салати",
-    "imageURL": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://plus.unsplash.com/premium_photo-1690561082681-1b140e8be129?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "price": 420,
     "description": "Яловича котлета з обсмаженими грибами, розплавленим швейцарським сиром та майонезом.",
     "category": "Бургери",
-    "imageURL": "https://images.unsplash.com/photo-1594212585257-238d2f7fb705?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1549611016-3a70d82b5040?q=80&w=1130&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 10,
@@ -85,7 +85,7 @@
     "price": 320,
     "description": "Два шматочки свіжого сирого лосося на пресованому рисі з оцтом.",
     "category": "Суші",
-    "imageURL": "https://images.unsplash.com/photo-1558985250-27a406d64cb3?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1562158074-d49fbeffcc91?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "price": 460,
     "description": "Поживна кіноа з запеченою солодкою картоплею, чорною квасолею, авокадо та лаймовою заправкою.",
     "category": "Салати",
-    "imageURL": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 13,
@@ -109,7 +109,7 @@
     "price": 620,
     "description": "Рол Каліфорнія, загорнутий в асорті зі свіжого сашімі та авокадо.",
     "category": "Суші",
-    "imageURL": "https://images.unsplash.com/photo-1615361200141-f45040f367be?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1636425732174-8700a53e8dd4?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
     "id": 15,
@@ -117,6 +117,6 @@
     "price": 400,
     "description": "Куряче філе в паніровці з маринованими огірками та гострим майонезом на підсмаженій булочці бріош.",
     "category": "Бургери",
-    "imageURL": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=800&auto=format&fit=crop"
+    "imageURL": "https://images.unsplash.com/photo-1700768400970-428c50bffc11?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
 ]
