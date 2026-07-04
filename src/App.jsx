@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
@@ -11,7 +11,7 @@ import { CartProvider } from './context/CartContext'
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <CartProvider>
           <Routes>
@@ -26,7 +26,7 @@ function App() {
           </Routes>
         </CartProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
