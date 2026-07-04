@@ -39,6 +39,12 @@ const Header = () => {
             <NavLink to="/profile" className={navLinkClass}>
               Профіль
             </NavLink>
+            <NavLink
+              to="/login"
+              className="ml-1 px-4 py-2 rounded-lg text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-500 transition-colors shadow-sm"
+            >
+              Увійти
+            </NavLink>
           </nav>
         </div>
       </div>

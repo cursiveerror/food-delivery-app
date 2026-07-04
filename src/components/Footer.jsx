@@ -18,6 +18,8 @@ const Footer = () => {
               <li><Link to="/" className="text-slate-600 hover:text-emerald-600 transition-colors">Меню</Link></li>
               <li><Link to="/cart" className="text-slate-600 hover:text-emerald-600 transition-colors">Кошик</Link></li>
               <li><Link to="/profile" className="text-slate-600 hover:text-emerald-600 transition-colors">Профіль</Link></li>
+              <li><Link to="/login" className="text-slate-600 hover:text-emerald-600 transition-colors">Вхід</Link></li>
+              <li><Link to="/register" className="text-slate-600 hover:text-emerald-600 transition-colors">Реєстрація</Link></li>
             </ul>
           </div>
 
