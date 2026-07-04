@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="10" y="10" width="80" height="80" rx="16" fill="#059669" />
+  
+  <rect x="10" y="8" width="80" height="74" rx="16" fill="#10B981" />
+  
+  <text x="50" y="57" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="bold" font-size="32" fill="#ffffff" text-anchor="middle">C+E</text>
+</svg>
