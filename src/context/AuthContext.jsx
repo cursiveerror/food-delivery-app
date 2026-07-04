@@ -12,29 +12,40 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem('ctrl_eat_user');
+    const savedUser = sessionStorage.getItem('ctrl_eat_user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
   useEffect(() => {
     if (user) {
-      localStorage.setItem('ctrl_eat_user', JSON.stringify(user));
+      sessionStorage.setItem('ctrl_eat_user', JSON.stringify(user));
     } else {
-      localStorage.removeItem('ctrl_eat_user');
+      sessionStorage.removeItem('ctrl_eat_user');
     }
   }, [user]);
 
   const login = (email, password) => {
-    // Mock login logic
     if (email && password.length >= 6) {
+      // Перевіряємо чи є такий користувач в "базі" (localStorage)
+      const users = JSON.parse(localStorage.getItem('ctrl_eat_users') || '[]');
+      const existingUser = users.find(u => u.email === email && u.password === password);
+
+      if (existingUser) {
+        setUser(existingUser);
+        return { success: true };
+      }
+
+      // Якщо користувача немає, але це тестовий вхід - генеруємо ім'я з email
+      const generatedName = email.split('@')[0];
+      const capitalizedName = generatedName.charAt(0).toUpperCase() + generatedName.slice(1);
+      
       setUser({
-        name: 'John Doe',
+        name: capitalizedName,
         email,
-        nickname: 'johndoe',
+        nickname: generatedName.toLowerCase(),
         orders: [
           { id: '1024', date: '12 Травня 2026', total: 450, status: 'Доставлено' },
           { id: '0988', date: '03 Травня 2026', total: 820, status: 'Доставлено' },
-          { id: '0852', date: '15 Квітня 2026', total: 360, status: 'Доставлено' },
         ],
       });
       return { success: true };
@@ -43,14 +54,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = (name, email, password) => {
-    // Mock register logic
     if (name && email && password.length >= 6) {
-      setUser({
+      const newUser = {
         name,
         email,
+        password, // Зберігаємо тільки для локальної імітації
         nickname: name.toLowerCase().replace(/\s+/g, '_'),
         orders: [],
-      });
+      };
+      
+      // Зберігаємо в нашу локальну "базу"
+      const users = JSON.parse(localStorage.getItem('ctrl_eat_users') || '[]');
+      users.push(newUser);
+      localStorage.setItem('ctrl_eat_users', JSON.stringify(users));
+
+      setUser(newUser);
       return { success: true };
     }
     return { success: false, error: 'Invalid registration data' };
