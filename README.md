@@ -4,7 +4,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=react-router&logoColor=white)
 
-**🚀 Live Demo: [Переглянути готовий сайт]([https://cursiveerror.github.io/food-delivery-app/])**
+**🚀 Live Demo: [Переглянути готовий сайт](https://cursiveerror.github.io/food-delivery-app/)**
 
 ## Про проєкт
 Ctrl+Eat — це сучасний та швидкий вебдодаток для зручного замовлення та доставки їжі. Головна мета проєкту — надати користувачам максимально простий, інтуїтивно зрозумілий та естетичний інтерфейс для вибору страв без зайвого візуального шуму. 
