@@ -1,10 +1,10 @@
+import { useState } from 'react'
+
 const orders = [
   { id: '1024', date: '12 Травня 2026', total: 450, status: 'Доставлено' },
   { id: '0988', date: '03 Травня 2026', total: 820, status: 'Доставлено' },
   { id: '0852', date: '15 Квітня 2026', total: 360, status: 'Доставлено' },
 ]
-
-import { useState } from 'react'
 
 const Profile = () => {
   const [nickname, setNickname] = useState('geek228_bit')
