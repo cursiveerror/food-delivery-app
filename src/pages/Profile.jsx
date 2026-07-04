@@ -1,15 +1,33 @@
-import { useState } from 'react'
-
-const orders = [
-  { id: '1024', date: '12 Травня 2026', total: 450, status: 'Доставлено' },
-  { id: '0988', date: '03 Травня 2026', total: 820, status: 'Доставлено' },
-  { id: '0852', date: '15 Квітня 2026', total: 360, status: 'Доставлено' },
-]
+import { useState, useEffect } from 'react'
+import { useAuth } from '../context/AuthContext'
 
 const Profile = () => {
-  const [nickname, setNickname] = useState('geek228_bit')
+  const { user, updateNickname } = useAuth()
+  const [nickname, setNickname] = useState(user?.nickname || '')
   const [isEditing, setIsEditing] = useState(false)
+  
+  useEffect(() => {
+    if (user?.nickname) {
+      setNickname(user.nickname)
+    }
+  }, [user?.nickname])
+
+  const orders = user?.orders || []
   const totalSpent = orders.reduce((sum, order) => sum + order.total, 0)
+
+  const handleSaveNickname = () => {
+    updateNickname(nickname)
+    setIsEditing(false)
+  }
+
+  if (!user) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+        <h2 className="text-2xl font-bold text-slate-800 mb-4">Будь ласка, увійдіть</h2>
+        <p className="text-slate-500">Щоб переглянути профіль, потрібно авторизуватись.</p>
+      </div>
+    )
+  }
 
   return (
     <section className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
@@ -17,10 +35,10 @@ const Profile = () => {
         <div className="p-6 sm:p-8 border-b border-slate-100 bg-gradient-to-br from-emerald-50/50 to-white">
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl font-bold font-mono shadow-sm shadow-emerald-600/20">
-              CE
+              {user.name.substring(0, 2).toUpperCase()}
             </div>
             <div className="flex-1">
-              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">Foodie Explorer</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">{user.name}</h1>
               {isEditing ? (
                 <div className="flex items-center gap-2 mt-1">
                   <input
@@ -31,7 +49,7 @@ const Profile = () => {
                     autoFocus
                   />
                   <button
-                    onClick={() => setIsEditing(false)}
+                    onClick={handleSaveNickname}
                     className="text-xs bg-emerald-600 text-white px-3 py-1.5 rounded-md hover:bg-emerald-700 transition-colors font-medium"
                   >
                     Зберегти
@@ -39,7 +57,7 @@ const Profile = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mt-0.5 group/edit">
-                  <p className="text-slate-500 text-sm">{nickname} · учасник Ctrl+Eat</p>
+                  <p className="text-slate-500 text-sm">@{nickname}</p>
                   <button
                     onClick={() => setIsEditing(true)}
                     className="text-slate-400 hover:text-emerald-600 opacity-0 group-hover/edit:opacity-100 transition-all duration-200"
