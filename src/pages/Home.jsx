@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import restaurants from '../data/restaurants.json'
+import { useCart } from '../context/CartContext'
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = useState('Усі')
@@ -18,8 +19,10 @@ const Home = () => {
     [activeCategory]
   )
 
+  const { addToCart } = useCart()
+
   const handleAddToCart = (dish) => {
-    console.log('Додано в кошик:', dish.name)
+    addToCart(dish)
   }
 
   return (
