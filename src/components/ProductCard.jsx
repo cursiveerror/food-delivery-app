@@ -1,6 +1,13 @@
+import { motion } from 'framer-motion'
+
 const ProductCard = ({ dish, onAddToCart }) => {
   return (
-    <article className="group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-600/5 hover:-translate-y-1">
+    <motion.article 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="group bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col transition-all duration-300 hover:border-emerald-200 hover:shadow-lg hover:shadow-emerald-600/5 hover:-translate-y-1"
+    >
       <div className="relative overflow-hidden">
         <img
           src={dish.imageURL}
@@ -35,8 +42,9 @@ const ProductCard = ({ dish, onAddToCart }) => {
           Додати в кошик
         </button>
       </div>
-    </article>
+    </motion.article>
   )
 }
 
 export default ProductCard
+

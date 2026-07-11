@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
@@ -71,7 +72,10 @@ const Checkout = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="max-w-lg mx-auto px-4 py-16 text-center">
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+        className="max-w-lg mx-auto px-4 py-16 text-center"
+      >
         <h2 className="text-2xl font-bold text-slate-800 mb-4">Кошик порожній</h2>
         <button
           onClick={() => navigate('/')}
@@ -79,12 +83,15 @@ const Checkout = () => {
         >
           Повернутися до меню
         </button>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-8">
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+      className="max-w-2xl mx-auto px-4 py-8"
+    >
       <h1 className="text-3xl font-bold text-slate-800 mb-8">Оформлення замовлення</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -170,7 +177,7 @@ const Checkout = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
