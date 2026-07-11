@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
@@ -14,6 +15,7 @@ function App() {
     <HashRouter>
       <AuthProvider>
         <CartProvider>
+          <Toaster position="bottom-right" toastOptions={{ className: 'font-sans' }} />
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />

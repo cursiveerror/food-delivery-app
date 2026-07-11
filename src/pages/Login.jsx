@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import AuthCard from '../components/AuthCard';
 import { useAuth } from '../context/AuthContext';
 
@@ -54,8 +55,9 @@ const Login = () => {
   };
 
   return (
-    <AuthCard
-      title="Вхід"
+    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}>
+      <AuthCard
+        title="Вхід"
       subtitle="Увійдіть до акаунту Ctrl+Eat, щоб оформлювати замовлення"
       footer={
         <>
@@ -110,6 +112,7 @@ const Login = () => {
         </button>
       </form>
     </AuthCard>
+    </motion.div>
   );
 };
 

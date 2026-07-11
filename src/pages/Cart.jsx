@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useCart } from '../context/CartContext';
 
 const Cart = () => {
@@ -6,7 +7,10 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <section className="max-w-lg mx-auto px-4 sm:px-6 py-16 sm:py-24">
+      <motion.section 
+        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+        className="max-w-lg mx-auto px-4 sm:px-6 py-16 sm:py-24"
+      >
         <div className="bg-white rounded-2xl border border-slate-200 p-8 sm:p-12 text-center shadow-sm">
           <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center">
             <span className="font-mono text-3xl text-slate-300">[]</span>
@@ -25,12 +29,15 @@ const Cart = () => {
             Перейти до меню
           </Link>
         </div>
-      </section>
+      </motion.section>
     );
   }
 
   return (
-    <section className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <motion.section 
+      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+      className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12"
+    >
       <div className="flex justify-between items-end mb-8">
         <h1 className="text-3xl font-bold text-slate-800">Мій кошик</h1>
         <button
@@ -105,7 +112,7 @@ const Cart = () => {
           Оформити замовлення
         </Link>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

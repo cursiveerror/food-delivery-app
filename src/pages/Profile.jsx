@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 
 const Profile = () => {
@@ -30,7 +31,10 @@ const Profile = () => {
   }
 
   return (
-    <section className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+    <motion.section 
+      initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+      className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14"
+    >
       <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
         <div className="p-6 sm:p-8 border-b border-slate-100 bg-gradient-to-br from-emerald-50/50 to-white">
           <div className="flex items-center gap-5">
@@ -109,7 +113,7 @@ const Profile = () => {
           </ul>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 
