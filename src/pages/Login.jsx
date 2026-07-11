@@ -62,46 +62,54 @@ const Login = () => {
       footer={
         <>
           Немає акаунту?{' '}
-          <Link to="/register" className="text-emerald-600 font-medium hover:text-emerald-700 transition-colors">
-            Зареєструватися
+          <Link to="/register" className="font-semibold text-emerald-600 dark:text-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
+            Створити акаунт
           </Link>
         </>
       }
     >
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {serverError && <div className="p-3 bg-red-50 text-red-600 text-sm rounded-xl">{serverError}</div>}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {serverError && (
+          <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 rounded-xl">
+            <p className="text-red-600 dark:text-red-400 text-sm text-center font-medium">{serverError}</p>
+          </div>
+        )}
         <div>
-          <label htmlFor="login-email" className={labelClass}>
-            Email
+          <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+            Email адреса
           </label>
           <input
-            id="login-email"
-            type="email"
+            id="email"
             name="email"
+            type="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="you@example.com"
-            autoComplete="email"
-            className={`${inputClass} ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
+            className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all dark:text-white ${
+              errors.email ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : ''
+            }`}
+            placeholder="name@example.com"
           />
-          {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+          {errors.email && <p className="text-red-500 text-xs mt-1.5">{errors.email}</p>}
         </div>
 
         <div>
-          <label htmlFor="login-password" className={labelClass}>
+          <label htmlFor="password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
             Пароль
           </label>
           <input
-            id="login-password"
-            type="password"
+            id="password"
             name="password"
+            type="password"
+            autoComplete="current-password"
             value={formData.password}
             onChange={handleChange}
+            className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all dark:text-white ${
+              errors.password ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : ''
+            }`}
             placeholder="••••••••"
-            autoComplete="current-password"
-            className={`${inputClass} ${errors.password ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
           />
-          {errors.password && <p className="mt-1 text-xs text-red-500">{errors.password}</p>}
+          {errors.password && <p className="text-red-500 text-xs mt-1.5">{errors.password}</p>}
         </div>
 
         <button

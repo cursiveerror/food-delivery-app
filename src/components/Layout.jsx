@@ -4,9 +4,9 @@ import Footer from './Footer'
 
 const Layout = () => {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col transition-colors">
       <div
-        className="fixed inset-0 pointer-events-none opacity-[0.35]"
+        className="fixed inset-0 pointer-events-none opacity-[0.35] dark:opacity-[0.1]"
         style={{
           backgroundImage: `
             linear-gradient(to right, #e2e8f0 1px, transparent 1px),
