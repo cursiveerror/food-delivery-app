@@ -70,82 +70,94 @@ const Register = () => {
       footer={
         <>
           Вже маєте акаунт?{' '}
-          <Link to="/login" className="text-emerald-600 font-medium hover:text-emerald-700 transition-colors">
+          <Link to="/login" className="font-semibold text-emerald-600 dark:text-emerald-500 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors">
             Увійти
           </Link>
         </>
       }
     >
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {serverError && <div className="p-3 bg-red-50 text-red-600 text-sm rounded-xl">{serverError}</div>}
-        
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="register-name" className={labelClass}>
+          <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
             Ім'я
           </label>
           <input
-            id="register-name"
-            type="text"
+            id="name"
             name="name"
+            type="text"
+            autoComplete="name"
             value={formData.name}
             onChange={handleChange}
+            className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all dark:text-white ${
+              errors.name ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : ''
+            }`}
             placeholder="Ваше ім'я"
-            autoComplete="name"
-            className={`${inputClass} ${errors.name ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
           />
-          {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+          {errors.name && <p className="text-red-500 text-xs mt-1.5">{errors.name}</p>}
         </div>
 
         <div>
-          <label htmlFor="register-email" className={labelClass}>
-            Email
+          <label htmlFor="email" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+            Email адреса
           </label>
           <input
-            id="register-email"
-            type="email"
+            id="email"
             name="email"
+            type="email"
+            autoComplete="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="you@example.com"
-            autoComplete="email"
-            className={`${inputClass} ${errors.email ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
+            className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all dark:text-white ${
+              errors.email ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : ''
+            }`}
+            placeholder="name@example.com"
           />
-          {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+          {errors.email && <p className="text-red-500 text-xs mt-1.5">{errors.email}</p>}
         </div>
 
         <div>
-          <label htmlFor="register-password" className={labelClass}>
+          <label htmlFor="password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
             Пароль
           </label>
           <input
-            id="register-password"
-            type="password"
+            id="password"
             name="password"
+            type="password"
+            autoComplete="new-password"
             value={formData.password}
             onChange={handleChange}
-            placeholder="••••••••"
-            autoComplete="new-password"
-            className={`${inputClass} ${errors.password ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
+            className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all dark:text-white ${
+              errors.password ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : ''
+            }`}
+            placeholder="Мінімум 6 символів"
           />
-          {errors.password && <p className="mt-1 text-xs text-red-500">{errors.password}</p>}
+          {errors.password && <p className="text-red-500 text-xs mt-1.5">{errors.password}</p>}
         </div>
 
         <div>
-          <label htmlFor="register-confirm" className={labelClass}>
-            Підтвердження пароля
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
+            Підтвердження паролю
           </label>
           <input
-            id="register-confirm"
-            type="password"
+            id="confirmPassword"
             name="confirmPassword"
+            type="password"
+            autoComplete="new-password"
             value={formData.confirmPassword}
             onChange={handleChange}
-            placeholder="••••••••"
-            autoComplete="new-password"
-            className={`${inputClass} ${errors.confirmPassword ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
+            className={`w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all dark:text-white ${
+              errors.confirmPassword ? 'border-red-500 focus:ring-red-500/20 focus:border-red-500' : ''
+            }`}
+            placeholder="Повторіть пароль"
           />
-          {errors.confirmPassword && <p className="mt-1 text-xs text-red-500">{errors.confirmPassword}</p>}
+          {errors.confirmPassword && <p className="text-red-500 text-xs mt-1.5">{errors.confirmPassword}</p>}
         </div>
+
+        {serverError && (
+          <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 rounded-xl">
+            <p className="text-red-600 dark:text-red-400 text-sm text-center font-medium">{serverError}</p>
+          </div>
+        )}
 
         <button
           type="submit"

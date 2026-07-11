@@ -23,10 +23,13 @@ const Profile = () => {
 
   if (!user) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-16 text-center">
-        <h2 className="text-2xl font-bold text-slate-800 mb-4">Будь ласка, увійдіть</h2>
-        <p className="text-slate-500">Щоб переглянути профіль, потрібно авторизуватись.</p>
-      </div>
+      <motion.div 
+        initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
+        className="max-w-2xl mx-auto px-4 py-16 text-center"
+      >
+        <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-4">Будь ласка, увійдіть</h2>
+        <p className="text-slate-500 dark:text-slate-400">Щоб переглянути профіль, потрібно авторизуватись.</p>
+      </motion.div>
     )
   }
 
@@ -35,21 +38,21 @@ const Profile = () => {
       initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.3 }}
       className="max-w-2xl mx-auto px-4 sm:px-6 py-10 sm:py-14"
     >
-      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
-        <div className="p-6 sm:p-8 border-b border-slate-100 bg-gradient-to-br from-emerald-50/50 to-white">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm transition-colors">
+        <div className="p-6 sm:p-8 border-b border-slate-100 dark:border-slate-800 bg-gradient-to-br from-emerald-50/50 to-white dark:from-emerald-900/10 dark:to-slate-900 transition-colors">
           <div className="flex items-center gap-5">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-emerald-600 rounded-2xl flex items-center justify-center text-white text-xl sm:text-2xl font-bold font-mono shadow-sm shadow-emerald-600/20">
               {user.name.substring(0, 2).toUpperCase()}
             </div>
             <div className="flex-1">
-              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">{user.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white">{user.name}</h1>
               {isEditing ? (
                 <div className="flex items-center gap-2 mt-1">
                   <input
                     type="text"
                     value={nickname}
                     onChange={(e) => setNickname(e.target.value)}
-                    className="border border-slate-300 rounded-md px-2 py-1 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 max-w-[150px]"
+                    className="border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-800 dark:text-white rounded-md px-2 py-1 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 max-w-[150px] transition-colors"
                     autoFocus
                   />
                   <button
@@ -61,10 +64,10 @@ const Profile = () => {
                 </div>
               ) : (
                 <div className="flex items-center gap-2 mt-0.5 group/edit">
-                  <p className="text-slate-500 text-sm">@{nickname}</p>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm">@{nickname}</p>
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="text-slate-400 hover:text-emerald-600 opacity-0 group-hover/edit:opacity-100 transition-all duration-200"
+                    className="text-slate-400 dark:text-slate-500 hover:text-emerald-600 dark:hover:text-emerald-400 opacity-0 group-hover/edit:opacity-100 transition-all duration-200"
                     title="Змінити нікнейм"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
@@ -82,31 +85,31 @@ const Profile = () => {
               { label: 'Витрачено', value: `${totalSpent} ₴` },
               { label: 'Статус', value: 'VIP' },
             ].map((stat) => (
-              <div key={stat.label} className="px-3 py-3 rounded-xl bg-white border border-slate-200 text-center">
-                <p className="font-mono text-sm sm:text-base font-bold text-emerald-600">{stat.value}</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">{stat.label}</p>
+              <div key={stat.label} className="px-3 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center transition-colors">
+                <p className="font-mono text-sm sm:text-base font-bold text-emerald-600 dark:text-emerald-500">{stat.value}</p>
+                <p className="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
 
         <div className="p-6 sm:p-8">
-          <h2 className="text-lg font-bold text-slate-800 mb-4">Історія замовлень</h2>
+          <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-4">Історія замовлень</h2>
           <ul className="space-y-3">
             {orders.map((order) => (
               <li
                 key={order.id}
-                className="group p-4 rounded-xl bg-slate-50 border border-slate-200 flex justify-between items-center hover:border-emerald-200 hover:bg-emerald-50/30 transition-all duration-200"
+                className="group p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 flex justify-between items-center hover:border-emerald-200 dark:hover:border-emerald-800 hover:bg-emerald-50/30 dark:hover:bg-emerald-900/10 transition-all duration-200"
               >
                 <div>
-                  <p className="font-mono text-sm font-bold text-slate-800">
+                  <p className="font-mono text-sm font-bold text-slate-800 dark:text-slate-200">
                     #{order.id}
                   </p>
-                  <p className="text-xs text-slate-500 mt-0.5">{order.date}</p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{order.date}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-mono font-bold text-emerald-600">{order.total} ₴</p>
-                  <p className="text-[11px] text-emerald-600/70 mt-0.5">{order.status}</p>
+                  <p className="font-mono font-bold text-emerald-600 dark:text-emerald-500">{order.total} ₴</p>
+                  <p className="text-[11px] text-emerald-600/70 dark:text-emerald-500/70 mt-0.5">{order.status}</p>
                 </div>
               </li>
             ))}

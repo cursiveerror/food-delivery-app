@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import ProductCard from '../components/ProductCard'
 import restaurants from '../data/restaurants.json'
-import { useCart } from '../context/CartContext'
+import useCartStore from '../store/useCartStore'
 
 const Home = () => {
   const [activeCategory, setActiveCategory] = useState('Усі')
@@ -39,7 +39,7 @@ const Home = () => {
     [activeCategory, searchTerm, sortOrder]
   )
 
-  const { addToCart } = useCart()
+  const addToCart = useCartStore((state) => state.addToCart)
 
   const handleAddToCart = (dish) => {
     addToCart(dish)
@@ -53,17 +53,17 @@ const Home = () => {
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.3 }}
     >
-      <section className="relative overflow-hidden border-b border-slate-200 bg-white">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-emerald-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <section className="relative overflow-hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors">
+        <div className="absolute top-0 right-0 w-72 h-72 bg-emerald-50 dark:bg-emerald-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative">
-          <p className="font-mono text-xs uppercase tracking-widest text-emerald-600 mb-4">
+          <p className="font-mono text-xs uppercase tracking-widest text-emerald-600 dark:text-emerald-500 mb-4">
             // food_delivery.init()
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-slate-800 tracking-tight mb-4 max-w-xl">
+          <h1 className="text-4xl sm:text-5xl font-bold text-slate-800 dark:text-white tracking-tight mb-4 max-w-xl">
             Смачна їжа —{' '}
-            <span className="text-emerald-600">один клік</span> від вас
+            <span className="text-emerald-600 dark:text-emerald-500">один клік</span> від вас
           </h1>
-          <p className="text-slate-500 text-lg max-w-lg leading-relaxed mb-8">
+          <p className="text-slate-500 dark:text-slate-400 text-lg max-w-lg leading-relaxed mb-8">
             Оберіть з {restaurants.length} страв і замовте доставку прямо зараз.
             Швидко, зручно, без зайвого шуму.
           </p>
@@ -76,22 +76,22 @@ const Home = () => {
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 min-w-[100px]"
+                className="px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 min-w-[100px]"
               >
-                <p className="font-mono text-xl font-bold text-emerald-600">{stat.value}</p>
-                <p className="text-xs text-slate-500 mt-0.5">{stat.label}</p>
+                <p className="font-mono text-xl font-bold text-emerald-600 dark:text-emerald-500">{stat.value}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-12 bg-white dark:bg-slate-950 transition-colors">
         <div className="flex flex-col mb-8 gap-4">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-bold text-slate-800">Меню</h2>
-              <p className="text-slate-500 text-sm mt-1">
+              <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Меню</h2>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
                 {filteredDishes.length} {filteredDishes.length === 1 ? 'страва' : 'страв'} доступно
               </p>
             </div>
@@ -103,7 +103,7 @@ const Home = () => {
                   placeholder="Пошук страв..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full px-4 py-2 pl-10 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-sm"
+                  className="w-full px-4 py-2 pl-10 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all text-sm dark:text-white"
                 />
                 <svg
                   className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
@@ -129,7 +129,7 @@ const Home = () => {
                   className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${
                     activeCategory === category
                       ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                      : 'bg-white text-slate-600 border-slate-200 hover:border-emerald-300 hover:text-emerald-600'
+                      : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-emerald-300 dark:hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400'
                   }`}
                 >
                   {category}
@@ -140,7 +140,7 @@ const Home = () => {
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value)}
-              className="px-4 py-1.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+              className="px-4 py-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl text-sm text-slate-700 dark:text-slate-300 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
             >
               <option value="default">Сортування: За замовчуванням</option>
               <option value="price-asc">Сортування: Від дешевих до дорогих</option>
@@ -156,11 +156,11 @@ const Home = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 bg-slate-50 rounded-2xl border border-slate-200 border-dashed">
-            <p className="text-slate-500">За вашим запитом нічого не знайдено.</p>
+          <div className="text-center py-16 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 border-dashed">
+            <p className="text-slate-500 dark:text-slate-400">За вашим запитом нічого не знайдено.</p>
             <button 
               onClick={() => {setSearchTerm(''); setActiveCategory('Усі'); setSortOrder('default');}}
-              className="mt-4 text-emerald-600 font-medium hover:text-emerald-700 transition-colors"
+              className="mt-4 text-emerald-600 dark:text-emerald-500 font-medium hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
             >
               Скинути фільтри
             </button>
